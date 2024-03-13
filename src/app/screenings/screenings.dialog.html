@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>PROGRAMMAZIONE</h2>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Film</mat-label>
+        <input matInput [matAutocomplete]="movieAuto" [(ngModel)]="data.movie">
+        <mat-autocomplete #movieAuto="matAutocomplete" [displayWith]="movieTitle">
+            @for (option of movies; track option) {
+            <mat-option [value]="option">{{option.title}}</mat-option>
+            }
+        </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Sala</mat-label>
+        <input matInput [matAutocomplete]="movieTheaterAuto" [(ngModel)]="data.movieTheater">
+        <mat-autocomplete #movieTheaterAuto="matAutocomplete" [displayWith]="movieTheaterName">
+            @for (option of movieTheaters; track option) {
+            <mat-option [value]="option">{{option.name}}</mat-option>
+            }
+        </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Inizio</mat-label>
+        <input matInput [matDatepicker]="start" [(ngModel)]="data.startDate">
+        <mat-datepicker-toggle matIconSuffix [for]="start"></mat-datepicker-toggle>
+        <mat-datepicker #start></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Fine</mat-label>
+        <input matInput [matDatepicker]="end" [(ngModel)]="data.endDate">
+        <mat-datepicker-toggle matIconSuffix [for]="end"></mat-datepicker-toggle>
+        <mat-datepicker #end></mat-datepicker>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Annulla</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Salva</button>
+</mat-dialog-actions>

@@ -1,0 +1,48 @@
+<h1 class="pageTitle">Film</h1>
+
+<button mat-button (click)="openDialog()">Aggiungi Film</button>
+
+<mat-divider class="divider"></mat-divider>
+
+<div class="mat-elevation-z8">
+    <table mat-table matSort [dataSource]="dataSource">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Titolo </th>
+            <td mat-cell *matCellDef="let element"> {{ element.title }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="genre">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Genere </th>
+            <td mat-cell *matCellDef="let element"> {{ element.genre }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="author">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Autore </th>
+            <td mat-cell *matCellDef="let element"> {{ element.author }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Azioni </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="openDialog(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteMovie(element.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
+</div>

@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>FILM</h2>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Titolo</mat-label>
+        <input matInput [(ngModel)]="data.title">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Genere</mat-label>
+        <input matInput [(ngModel)]="data.genre">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Autore</mat-label>
+        <input matInput [(ngModel)]="data.author">
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Annulla</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Salva</button>
+</mat-dialog-actions>

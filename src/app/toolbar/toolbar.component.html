@@ -1,0 +1,12 @@
+<mat-toolbar>
+    <span class="home" routerLink="">CineMille</span>
+    <span class="spacer"></span>
+    <button class="menu-item" mat-button [matMenuTriggerFor]="menu">Backoffice</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/movies">Film</button>
+        <button mat-menu-item routerLink="/movie-theaters">Sala</button>
+        <button mat-menu-item routerLink="/screenings">Programmazione</button>
+    </mat-menu>
+    <span class="spacer"></span>
+    <span class="menu-item" routerLink="/history">Storico</span>
+</mat-toolbar>

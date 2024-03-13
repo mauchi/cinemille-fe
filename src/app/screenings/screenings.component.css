@@ -1,0 +1,16 @@
+.movie-form {
+    width: 100%;
+}
+
+.movie-form-item {
+    margin: 1%;
+    width: 20%;
+}
+
+.divider {
+    padding: 1%;
+}
+
+.pageTitle {
+    text-align: center;
+}

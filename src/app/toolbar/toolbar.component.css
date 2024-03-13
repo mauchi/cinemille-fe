@@ -1,0 +1,13 @@
+.spacer {
+    width: 2%;
+}
+
+.menu-item {
+    font-size: medium;
+    cursor: pointer;
+}
+
+.home {
+    font-size: large;
+    cursor: pointer;
+}

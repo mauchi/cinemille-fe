@@ -1,0 +1,25 @@
+<mat-form-field class="week-choice">
+    <mat-date-range-input [rangePicker]="picker">
+        <input #startDate matStartDate placeholder="Inizio">
+        <input #endDate matEndDate placeholder="Fine">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field>
+
+<button mat-button (click)="setWeek(startDate, endDate)">Applica</button>
+
+<mat-divider class="divider"></mat-divider>
+
+<div class="week-choice">
+    <h3>Programmazione settimana</h3>
+    <mat-list>
+        @for (screening of screenings; track screening) {
+        <mat-list-item>
+            <span matListItemTitle>{{ screening.movie.title }}</span>
+            <span matListItemLine>Sala: {{ screening.movieTheater.name }}</span>
+            <span matListItemLine>Dal: {{ screening.startDate }} Al: {{ screening.endDate }}</span>
+        </mat-list-item>
+        }
+    </mat-list>
+</div>
