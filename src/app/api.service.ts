@@ -3,6 +3,7 @@ import { Injectable, QueryList } from '@angular/core';
 import { Screening } from './history/history.component';
 import { Movie } from './movies/movies.component';
 import { MovieTheater } from './movie-theaters/movie-theaters.component';
+import { start } from 'node:repl';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,19 @@ export class ApiService {
 
   saveScreening(screening: Screening) {
     const url = this.host + this.screeningPath;
-    return this.httpClient.put<Screening>(url, screening, { headers: this.headers })
+
+    // ISO FORMAT and TIMEZONE correction
+    let inizio = screening.startDate.toJSON().substring(0, 10);
+    let fine = screening.endDate.toJSON().substring(0, 10);
+    let startDate: Date = new Date(inizio);
+    let endDate: Date = new Date(fine);
+
+    startDate.setDate(startDate.getDate() + 1);
+    endDate.setDate(endDate.getDate() + 1);
+
+    const body = { id: screening.id, movie: screening.movie, movieTheater: screening.movieTheater, startDate: startDate, endDate: endDate };
+
+    return this.httpClient.put<Screening>(url, body, { headers: this.headers })
   }
 
   deleteScreening(id: number) {
